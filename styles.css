@@ -1,0 +1,622 @@
+@import url('https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,300&family=DM+Serif+Display:ital@0;1&display=swap');
+
+:root {
+    /* Paleta */
+    --bg:            #08090d;          /* Fondo base casi negro */
+    --surface:       #0f1117;          /* Superficie de tarjetas */
+    --surface-2:     #161a23;          /* Superficie elevada */
+    --border:        rgba(255,255,255,0.07); /* Borde sutil */
+    --border-hot:    rgba(220,56,56,0.35);   /* Borde acento */
+
+    --red:           #dc3838;          /* Rojo principal */
+    --red-dim:       rgba(220,56,56,0.12);
+    --red-glow:      rgba(220,56,56,0.25);
+    --amber:         #e8943a;          /* Ámbar secundario */
+    --amber-dim:     rgba(232,148,58,0.12);
+    --green:         #2ecc71;          /* Verde esperanza */
+    --green-dim:     rgba(46,204,113,0.1);
+
+    --text:          #f0f2f5;          /* Texto principal */
+    --text-muted:    #6b7280;          /* Texto apagado */
+    --text-soft:     #9ca3af;          /* Texto suave */
+
+    /* Tipografía */
+    --font-body:     'DM Sans', sans-serif;
+    --font-display:  'DM Serif Display', serif;
+
+    /* Geometría */
+    --radius-sm:     8px;
+    --radius-md:     12px;
+    --radius-lg:     18px;
+    --radius-xl:     24px;
+
+    --shadow-sm:     0 1px 3px rgba(0,0,0,0.4);
+    --shadow-md:     0 4px 16px rgba(0,0,0,0.5);
+    --shadow-red:    0 8px 32px rgba(220,56,56,0.2);
+}
+
+*, *::before, *::after { box-sizing: border-box; }
+
+#MainMenu,
+footer,
+header,
+[data-testid="collapsedControl"],
+[data-testid="stToolbar"],
+[data-testid="stDecoration"],
+[data-testid="stStatusWidget"] {
+    display: none !important;
+    visibility: hidden !important;
+}
+
+.stApp {
+    background: var(--bg) !important;
+    color: var(--text) !important;
+    font-family: var(--font-body) !important;
+    min-height: 100vh;
+}
+
+.main .block-container {
+    padding: 1rem 1.5rem 3rem !important;
+    max-width: 100% !important;
+}
+
+[data-testid="stSidebar"] {
+    display: none !important;
+}
+
+.navbar {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-bottom: 1px solid var(--border-hot);
+    border-radius: var(--radius-lg);
+    padding: 0.75rem 1.5rem;
+    margin-bottom: 1.25rem;
+    backdrop-filter: blur(12px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+}
+
+.navbar-brand {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    flex-shrink: 0;
+}
+
+.navbar-logo {
+    width: 44px;
+    height: 44px;
+    background: var(--red-dim);
+    border: 1.5px solid var(--red);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.5rem;
+    flex-shrink: 0;
+}
+
+.navbar-title {
+    display: flex;
+    flex-direction: column;
+    line-height: 1;
+}
+
+.navbar-escuela {
+    font-family: var(--font-display);
+    font-size: 1.15rem;
+    color: var(--text);
+    letter-spacing: 0.02em;
+}
+
+.navbar-subtitulo {
+    font-size: 0.65rem;
+    color: var(--text-muted);
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    margin-top: 3px;
+}
+
+.navbar-emergency {
+    font-size: 0.75rem;
+    color: var(--text-soft);
+    background: var(--red-dim);
+    border: 1px solid var(--border-hot);
+    border-radius: 99px;
+    padding: 0.35rem 0.9rem;
+    white-space: nowrap;
+    letter-spacing: 0.01em;
+}
+
+.navbar-emergency strong {
+    color: var(--red);
+    font-weight: 600;
+}
+
+/* ── Botones de nav (columnas de Streamlit) ──────────── */
+/* Activo */
+div[data-testid="stHorizontalBlock"] .stButton > button[kind="primary"] {
+    background: var(--red) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.78rem !important;
+    font-weight: 600 !important;
+    padding: 0.4rem 0.25rem !important;
+    letter-spacing: 0.02em !important;
+    box-shadow: 0 2px 12px var(--red-glow) !important;
+    transition: opacity 0.2s !important;
+}
+
+div[data-testid="stHorizontalBlock"] .stButton > button[kind="primary"]:hover {
+    opacity: 0.88 !important;
+}
+
+/* Inactivo */
+div[data-testid="stHorizontalBlock"] .stButton > button[kind="secondary"] {
+    background: transparent !important;
+    color: var(--text-muted) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.78rem !important;
+    font-weight: 500 !important;
+    padding: 0.4rem 0.25rem !important;
+    transition: all 0.2s !important;
+}
+
+div[data-testid="stHorizontalBlock"] .stButton > button[kind="secondary"]:hover {
+    background: var(--red-dim) !important;
+    border-color: var(--border-hot) !important;
+    color: var(--text) !important;
+}
+
+.hero-section {
+    position: relative;
+    overflow: hidden;
+    background: var(--surface);
+    border: 1px solid var(--border-hot);
+    border-radius: var(--radius-xl);
+    padding: 3.5rem 2rem;
+    text-align: center;
+    margin-bottom: 2rem;
+}
+
+/* Fondo decorativo */
+.hero-section::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background:
+        radial-gradient(ellipse 60% 50% at 50% 0%, rgba(220,56,56,0.12) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 80% 100%, rgba(232,148,58,0.06) 0%, transparent 70%);
+    pointer-events: none;
+}
+
+/* Línea superior decorativa */
+.hero-section::after {
+    content: '';
+    position: absolute;
+    top: 0; left: 10%; right: 10%;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--red), transparent);
+}
+
+.hero-titulo {
+    font-family: var(--font-display);
+    font-size: clamp(2rem, 5vw, 3.8rem);
+    color: var(--text);
+    margin: 0 0 0.5rem 0;
+    line-height: 1.1;
+    letter-spacing: -0.01em;
+    position: relative;
+}
+
+.hero-titulo span {
+    color: var(--red);
+}
+
+.hero-subtitulo {
+    font-size: clamp(0.85rem, 2vw, 1rem);
+    color: var(--text-muted);
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    font-weight: 400;
+    margin-top: 0.5rem;
+    position: relative;
+}
+
+.stat-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-md);
+    padding: 1.5rem 1rem;
+    text-align: center;
+    transition: border-color 0.25s, transform 0.25s;
+    height: 100%;
+}
+
+.stat-card:hover {
+    border-color: var(--border-hot);
+    transform: translateY(-3px);
+}
+
+.stat-numero {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.6rem);
+    color: var(--red);
+    line-height: 1;
+    margin-bottom: 0.5rem;
+}
+
+.stat-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    line-height: 1.4;
+    font-weight: 500;
+}
+
+.seccion-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: var(--radius-lg);
+    padding: 1.75rem;
+    margin-bottom: 1.25rem;
+}
+
+.seccion-titulo {
+    font-family: var(--font-display);
+    font-size: 1.35rem;
+    color: var(--text);
+    margin-bottom: 1.25rem;
+    padding-bottom: 0.75rem;
+    border-bottom: 1px solid var(--border);
+    letter-spacing: 0.01em;
+}
+
+.droga-card {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--red);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    margin: 0.6rem 0;
+    transition: border-left-color 0.2s, background 0.2s;
+}
+
+.droga-card:hover {
+    border-left-color: var(--amber);
+    background: rgba(255,255,255,0.02);
+}
+
+.droga-nombre {
+    font-size: 0.95rem;
+    font-weight: 600;
+    color: var(--text);
+    margin-bottom: 0.3rem;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+}
+
+.droga-desc {
+    font-size: 0.85rem;
+    color: var(--text-soft);
+    line-height: 1.6;
+    font-weight: 300;
+}
+
+/* Badge de riesgo */
+.riesgo-badge {
+    font-size: 0.68rem;
+    font-weight: 600;
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+    padding: 2px 8px;
+    border-radius: 99px;
+    flex-shrink: 0;
+}
+
+.alerta-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 0.75rem;
+    padding: 0.7rem 0;
+    border-bottom: 1px solid var(--border);
+}
+
+.alerta-item:last-child {
+    border-bottom: none;
+}
+
+.alerta-icon {
+    font-size: 0.85rem;
+    min-width: 22px;
+    margin-top: 2px;
+}
+
+.alerta-texto {
+    font-size: 0.88rem;
+    color: var(--text-soft);
+    line-height: 1.5;
+    font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════════════
+   CARD ESPERANZA / POSITIVA
+══════════════════════════════════════════════════════ */
+.esperanza-card {
+    background: var(--green-dim);
+    border: 1px solid rgba(46,204,113,0.2);
+    border-radius: var(--radius-lg);
+    padding: 2rem;
+    text-align: center;
+    margin: 1rem 0;
+}
+
+.esperanza-titulo {
+    font-family: var(--font-display);
+    font-size: 1.5rem;
+    color: var(--green);
+    margin-bottom: 0.75rem;
+    letter-spacing: 0.01em;
+}
+
+/* ══════════════════════════════════════════════════════
+   LÍNEA DE AYUDA / EMERGENCIA
+══════════════════════════════════════════════════════ */
+.linea-ayuda {
+    background: var(--red-dim);
+    border: 1px solid var(--border-hot);
+    border-radius: var(--radius-lg);
+    padding: 1.5rem 2rem;
+    text-align: center;
+}
+
+.linea-numero {
+    font-family: var(--font-display);
+    font-size: clamp(1.8rem, 4vw, 2.4rem);
+    color: var(--red);
+    letter-spacing: 0.05em;
+    margin: 0.25rem 0;
+}
+
+/* ══════════════════════════════════════════════════════
+   QUIZ — RESPUESTAS
+══════════════════════════════════════════════════════ */
+.respuesta-correcta {
+    background: var(--green-dim);
+    border: 1px solid rgba(46,204,113,0.25);
+    border-left: 3px solid var(--green);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+.respuesta-incorrecta {
+    background: var(--red-dim);
+    border: 1px solid var(--border-hot);
+    border-left: 3px solid var(--red);
+    border-radius: var(--radius-md);
+    padding: 1rem 1.25rem;
+    color: var(--text);
+    margin-bottom: 0.75rem;
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+/* ══════════════════════════════════════════════════════
+   FOOTER
+══════════════════════════════════════════════════════ */
+.footer-section {
+    border-top: 1px solid var(--border);
+    padding: 2rem 1rem;
+    text-align: center;
+    margin-top: 3rem;
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    line-height: 1.8;
+}
+
+.footer-section code {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-radius: 4px;
+    padding: 1px 5px;
+    font-size: 0.72rem;
+    color: var(--amber);
+}
+
+/* ══════════════════════════════════════════════════════
+   STREAMLIT: COMPONENTES NATIVOS
+══════════════════════════════════════════════════════ */
+
+/* Botones generales */
+.stButton > button {
+    background: var(--red) !important;
+    color: #fff !important;
+    border: none !important;
+    border-radius: var(--radius-sm) !important;
+    font-family: var(--font-body) !important;
+    font-weight: 600 !important;
+    font-size: 0.9rem !important;
+    letter-spacing: 0.03em !important;
+    padding: 0.55rem 1.5rem !important;
+    transition: opacity 0.2s, transform 0.2s !important;
+    box-shadow: 0 2px 8px var(--red-glow) !important;
+}
+
+.stButton > button:hover {
+    opacity: 0.85 !important;
+    transform: translateY(-1px) !important;
+}
+
+/* Inputs */
+.stTextInput > div > div > input,
+.stTextArea > div > div > textarea {
+    background: var(--surface-2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem !important;
+    transition: border-color 0.2s !important;
+}
+
+.stTextInput > div > div > input:focus,
+.stTextArea > div > div > textarea:focus {
+    border-color: var(--red) !important;
+    box-shadow: 0 0 0 2px var(--red-dim) !important;
+    outline: none !important;
+}
+
+/* Selectbox */
+.stSelectbox > div > div {
+    background: var(--surface-2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    color: var(--text) !important;
+    font-family: var(--font-body) !important;
+}
+
+/* Labels */
+.stTextInput label,
+.stTextArea label,
+.stSelectbox label {
+    color: var(--text-soft) !important;
+    font-size: 0.82rem !important;
+    font-weight: 500 !important;
+    letter-spacing: 0.03em !important;
+    text-transform: uppercase !important;
+    font-family: var(--font-body) !important;
+}
+
+/* Radio buttons */
+.stRadio > div {
+    gap: 0.4rem !important;
+}
+
+.stRadio label {
+    color: var(--text-soft) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.9rem !important;
+    background: var(--surface-2) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-sm) !important;
+    padding: 0.5rem 0.75rem !important;
+    transition: border-color 0.2s !important;
+    cursor: pointer !important;
+}
+
+.stRadio label:hover {
+    border-color: var(--border-hot) !important;
+    color: var(--text) !important;
+}
+
+/* Títulos H generados por Streamlit */
+h1, h2, h3, h4, h5 {
+    font-family: var(--font-display) !important;
+    color: var(--text) !important;
+    letter-spacing: -0.01em !important;
+    font-weight: 400 !important;
+}
+
+[data-testid="stAlert"] {
+    border-radius: var(--radius-md) !important;
+    border: 1px solid var(--border) !important;
+    font-family: var(--font-body) !important;
+    font-size: 0.88rem !important;
+}
+
+hr {
+    border: none !important;
+    border-top: 1px solid var(--border) !important;
+    margin: 1.5rem 0 !important;
+}
+
+/* Métricas */
+[data-testid="stMetric"] {
+    background: var(--surface) !important;
+    border: 1px solid var(--border) !important;
+    border-radius: var(--radius-md) !important;
+    padding: 1rem !important;
+}
+
+[data-testid="stMetricLabel"] { color: var(--text-muted) !important; }
+[data-testid="stMetricValue"] { color: var(--red) !important; font-family: var(--font-display) !important; }
+
+/* ══════════════════════════════════════════════════════
+   RESPONSIVE — MÓVIL
+══════════════════════════════════════════════════════ */
+@media (max-width: 768px) {
+    .main .block-container {
+        padding: 0.5rem 0.75rem 2.5rem !important;
+    }
+
+    .navbar {
+        flex-wrap: wrap;
+        gap: 0.5rem;
+        padding: 0.65rem 1rem;
+        border-radius: var(--radius-md);
+    }
+
+    .navbar-emergency {
+        display: none; 
+    }
+
+    .navbar-logo {
+        width: 36px;
+        height: 36px;
+        font-size: 1.2rem;
+    }
+
+    .navbar-escuela {
+        font-size: 1rem;
+    }
+
+    .hero-section {
+        padding: 2.5rem 1.25rem;
+        border-radius: var(--radius-lg);
+    }
+
+    .seccion-card {
+        padding: 1.25rem;
+        border-radius: var(--radius-md);
+    }
+
+    .stat-card {
+        padding: 1.25rem 0.75rem;
+    }
+
+    .linea-ayuda {
+        padding: 1.25rem;
+    }
+
+    .esperanza-card {
+        padding: 1.5rem 1rem;
+    }
+
+    div[data-testid="stHorizontalBlock"] .stButton > button[kind="primary"],
+    div[data-testid="stHorizontalBlock"] .stButton > button[kind="secondary"] {
+        font-size: 0.68rem !important;
+        padding: 0.35rem 0.15rem !important;
+    }
+}
+
+::-webkit-scrollbar { width: 4px; height: 4px; }
+::-webkit-scrollbar-track { background: var(--bg); }
+::-webkit-scrollbar-thumb { background: rgba(220,56,56,0.4); border-radius: 2px; }
+::-webkit-scrollbar-thumb:hover { background: var(--red); }
