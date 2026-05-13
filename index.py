@@ -8,7 +8,7 @@ st.set_page_config(
     initial_sidebar_state="collapsed",   
 )
 
-css_path = os.path.join(os.path.dirname(__file__), "assets/styles.css")
+css_path = os.path.join(os.path.dirname(__file__), "styles.css")
 if os.path.exists(css_path):
     with open(css_path, "r", encoding="utf-8") as f:
         css = f.read()
